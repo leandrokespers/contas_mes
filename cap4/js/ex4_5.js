@@ -9,11 +9,10 @@ function registrarConta() {
   let outTotal = document.getElementById("outTotal");
 
   let descricao = inDescricao.value;
-  //É necessário converter para number
   let valor = Number(inValor.value);
 
   if (descricao === "" || valor === 0 || isNaN(valor)) {
-    alert("Por favor, insira valores corretos.");
+    alert("Insira os valores corretos");
     inDescricao.focus();
     return;
   }
@@ -21,25 +20,24 @@ function registrarConta() {
   numContas++;
   valTotal += valor;
 
-  resposta = `${resposta} ${descricao} R$ ${valor.toFixed(2)} "\n"`;
+  resposta = `${resposta} ${descricao} - R$ ${valor.toFixed(2)} `;
 
-  outListaContas.textContent = `${resposta} ----------------------------`;
-  outTotal.textContent = `${numContas} Conta(s) - Total R$ ${valTotal.toFixed(
+  outListaContas.textContent = `${resposta} -----------------------`;
+  outTotal.textContent = `${numContas} Conta(s) Total R$: ${valTotal.toFixed(
     2
   )}`;
 
-  clearInput();
+  clearInputs();
 }
 
-function clearInput() {
-  inDescricao.value = "";
-  inValor.value = "";
+function clearInputs() {
+  inDescricao = "";
+  inValor = "";
   inDescricao.focus();
 }
 
 const btRegistrar = document.getElementById("btRegistrar");
 btRegistrar.addEventListener("click", registrarConta);
-
 //
 //
 //
